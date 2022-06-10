@@ -1,9 +1,16 @@
-class BooksController < InheritedResources::Base
+class BooksController < ApplicationController
+  load_and_authorize_resource
+
+  def new
+    @book = Book.new 
+  end
+
+  def show
+  end
 
   def create 
-    book = Book.new(book_params)
-    book.user_id = current_user.id
-    if book.save
+    @book.user_id = current_user.id
+    if @book.save
       redirect_to root_path
     end
   end
@@ -12,14 +19,20 @@ class BooksController < InheritedResources::Base
     @books = Book.all
   end
 
-  def edit
-    @book = Book.find(params[:id])
-    if can? :edit, @book
-      render :edit
-    else
-      flash[:alert] = "You Are not authorised to update this!!"
+  def edit 
+  end
+
+  def update
+    if @book.update(book_params)
       redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @book.destroy
+    redirect_to root_path
   end
 
   private

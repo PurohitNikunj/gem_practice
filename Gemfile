@@ -76,3 +76,5 @@ gem "cancancan", "~> 3.3"
 gem "activeadmin", "~> 2.11"
 
 gem "bcrypt", "~> 3.1"
+
+gem "pry", "~> 0.14.1"

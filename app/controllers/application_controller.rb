@@ -2,7 +2,10 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   before_action :is_authenticated, unless: :ordinary_controller
   before_action :not_loggedin, if: :ordinary_controller
-
+  rescue_from CanCan::AccessDenied do |exception|
+      flash[:alert] = "You are not authorized to #{exception.action} this #{exception.subject.class}"
+      redirect_to root_path 
+  end
 
   private
   def is_authenticated
