@@ -10,13 +10,21 @@ class BooksController < ApplicationController
 
   def create 
     @book.user_id = current_user.id
-    if @book.save
+    if @book.save()
       redirect_to root_path
     end
   end
 
-  def index
-    @books = Book.all
+  def index(nxt=1)
+    # if params[:nxt]
+    #   nxt = params[:nxt]
+    #   @nxt = nxt.to_i
+    # else
+    #   @nxt = nxt
+    # end
+    # @books = Book.page(@nxt)
+
+    @books = Book.page(params[:page])
   end
 
   def edit 

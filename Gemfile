@@ -78,3 +78,5 @@ gem "activeadmin", "~> 2.11"
 gem "bcrypt", "~> 3.1"
 
 gem "pry", "~> 0.14.1"
+
+gem "kaminari", "~> 1.2"

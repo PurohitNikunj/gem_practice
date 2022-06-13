@@ -5,10 +5,24 @@
 <div id="books">
   <% @books.each do |book| %>
     <%= render book %>
-    <p>
-      <%= link_to "Show this book", book %>
-    </p>
+    ----------------
   <% end %>
 </div>
 
+<%# ------ Custom Pagination ------- %>
+
+<%# <% if Book.page(@nxt+1).count > 0 %> 
+  <%# <%= link_to "Next>>",books_path(nxt:@nxt+1) %> 
+<%# <% end %> 
+<%# <% if @nxt > 1 %> 
+  <%# <%= link_to "<<Prev",books_path(nxt:@nxt-1) %> 
+<%# <% end %> 
+
+<%# ========================== %>
+
+ <%# ------- Pagination with kaminari helpers -------- %>
+
+<%= paginate @books, outer_window: 3 %>
+
+<%# ===================== %>
 <%= link_to "New book", new_book_path %>
