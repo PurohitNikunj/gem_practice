@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
       redirect_to root_path 
   end
 
+
   private
   def is_authenticated
       unless loggedin?

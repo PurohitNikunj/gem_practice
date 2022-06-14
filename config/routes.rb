@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :books
+  resources :employees
   ActiveAdmin.routes(self)
 
   resources :users, only: [:new,:create]

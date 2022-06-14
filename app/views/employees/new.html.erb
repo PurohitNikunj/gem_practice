@@ -1,0 +1,10 @@
+<%= simple_form_for @employee do |f| %>
+  <%= f.input :name, label: "Employee_Name" %>
+  <%= f.input :email %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
+  <%= f.input :gender, as: :select, collection: [['Male', 0], ['Female', 1], ['Other', 2]] %>
+  <%= f.input :birth_date %>
+
+  <%= f.button :submit %>
+<% end %>
